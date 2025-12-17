@@ -29,27 +29,27 @@ async goto() {
 await this.page.goto('https://qoria.com/contact');
 }
 
-async login(){
+async login(firstName:string, lastName: string, company: string, email: string, phone: string, country: string, messageTextBox: string){
  await expect(this.firstNameField).toBeVisible();
- await this.firstNameField.fill("anusha");
+ await this.firstNameField.fill(firstName);
  
  await expect(this.lastNameField).toBeVisible();
- await this.lastNameField.fill("Yarra");
+ await this.lastNameField.fill(lastName);
 
  await expect(this.company).toBeVisible();
- await this.company.fill("technoidentity");
+ await this.company.fill(company);
 
  await expect(this.email).toBeVisible();
- await this.email.fill("anusha@gmail.com");
+ await this.email.fill(email);
 
  await expect(this.phone).toBeVisible();
- await this.phone.fill("093843953");
+ await this.phone.fill(phone);
 
  await expect(this.country).toBeVisible();
- await this.country.fill("Australia");
+ await this.country.fill(country);
 
  await expect(this.messageTextBox).toBeVisible();
- await this.messageTextBox.fill("nothing");
+ await this.messageTextBox.fill(messageTextBox);
 
  await expect(this.submitButton).toBeVisible()
 

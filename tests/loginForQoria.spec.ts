@@ -1,14 +1,15 @@
-import {test, expect} from '@playwright/test';
-import {contactforQoria} from '../pages/loginForQoria'
+import { test, expect } from '../fixtures/qoriaFixture';
 
-
-
-
-test.only('dashboard login for qoria', async({page}) => {
-  const loginPage = new contactforQoria(page);
-await loginPage.goto();
-await loginPage.login();
-await loginPage.assertion("https://qoria.com/contact")
-
-
+test.only('dashboard login for qoria', async ({ contactForm, validData, url }) => {
+  await contactForm.goto();
+  await contactForm.login(
+    validData.firstName,
+    validData.lastName,
+    validData.company,
+    validData.email,
+    validData.phone,
+    validData.country,
+    validData.messageTextBox
+  );
+  await contactForm.assertDashboardVisible(url.dashboardUrl);
 });
